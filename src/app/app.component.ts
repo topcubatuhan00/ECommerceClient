@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
-import * as jQuery from 'jquery';
-const $ = jQuery.default;
+declare var $: any;
 
 @Component({
   selector: 'app-root',
