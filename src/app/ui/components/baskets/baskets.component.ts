@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import { BaseComponent } from '../../../base/base.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
-  selector: 'app-baskets',
-  standalone: true,
-  imports: [],
-  templateUrl: './baskets.component.html',
-  styleUrl: './baskets.component.css'
+	selector: 'app-baskets',
+	standalone: true,
+	imports: [],
+	templateUrl: './baskets.component.html',
+	styleUrl: './baskets.component.css'
 })
-export class BasketsComponent {
-
+export class BasketsComponent extends BaseComponent {
+	constructor(spinner: NgxSpinnerService) {
+		super(spinner);
+	}
 }
