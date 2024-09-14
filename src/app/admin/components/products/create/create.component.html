@@ -1,0 +1,23 @@
+<div class="createcontainer">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input #txtName matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Stock</mat-label>
+        <input matInput #txtStock type="number" min="0" value="0">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input #txtPrice matInput type="number" min="0" value="0">
+    </mat-form-field>
+
+    <div class="example-button-container">
+        <button (click)="create(txtName, txtPrice, txtStock)" mat-fab extended>
+            <mat-icon>save</mat-icon>
+            Save
+        </button>
+    </div>
+</div>

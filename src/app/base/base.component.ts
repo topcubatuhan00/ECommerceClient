@@ -7,10 +7,6 @@ export class BaseComponent {
 
 	showScanner(){
 		this._spinner.show();
-
-		setTimeout(() => {
-            this._spinner.hide();
-        }, 1000);
 	}
 
 	hideScanner(){

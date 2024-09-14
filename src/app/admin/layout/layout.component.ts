@@ -19,7 +19,7 @@ export class LayoutComponent {
 
 	constructor(private _alertify: AlertifyService) { }
 	ngOnInit() {
-		this._alertify.message('Hello World', MessageType.Error);
+		// this._alertify.message('Hello World', MessageType.Error);
 	}
 
 }

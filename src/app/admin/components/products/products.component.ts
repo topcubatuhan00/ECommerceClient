@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { BaseComponent } from '../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClientService } from '../../../services/common/http-client.service';
-import { Product } from '../../../contracts/product';
+// import { Product } from '../../../contracts/create_product';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { CreateComponent } from "./create/create.component";
+import { ListComponent } from "./list/list.component";
 
 @Component({
 	selector: 'app-products',
 	standalone: true,
-	imports: [],
+	imports: [MatSidenavModule, CreateComponent, ListComponent],
 	templateUrl: './products.component.html',
 	styleUrl: './products.component.css'
 })
@@ -35,12 +38,12 @@ export class ProductsComponent extends BaseComponent {
 
 		// this._http.delete({controller:"Product"}, "47c8dbae-a739-4581-81f9-bdbef9adf9e6").subscribe(data => console.log(data));
 
-		this._http.get<Product[]>({
-			 controller: "Product"
-		}).subscribe(data => {
-			console.log(data[0].name);
+		// this._http.get<Product[]>({
+		// 	 controller: "Product"
+		// }).subscribe(data => {
+		// 	console.log(data[0].name);
 			
-		})
+		// })
 	}
 
 }
