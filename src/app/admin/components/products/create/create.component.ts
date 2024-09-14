@@ -7,7 +7,7 @@ import { ProductService } from '../../../../services/common/models/product.servi
 import { Create_Product } from '../../../../contracts/create_product';
 import { BaseComponent } from '../../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AlertifyService, MessageType } from '../../../../services/admin/alertify.service';
+import { AlertifyService, DelayTime, MessageType, Position } from '../../../../services/admin/alertify.service';
 
 @Component({
 	selector: 'app-create',
@@ -32,7 +32,7 @@ export class CreateComponent extends BaseComponent {
 		this._service.createProduct(create_product, () => {
 			this.hideScanner();
 			this._alertify.message("Product created successfully!", MessageType.Success);
-		})
+		}, errorMessage => {this.hideScanner(); this._alertify.message(errorMessage, MessageType.Error, Position.BottomLeft, DelayTime.LongDelay)});
 	}
 
 }	

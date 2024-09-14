@@ -9,9 +9,9 @@ export class AlertifyService {
 
 	constructor() { }
 
-	message(message: string, messageType: MessageType, position: Position = Position.BottomLeft) {
+	message(message: string, messageType: MessageType, position: Position = Position.BottomLeft, delayTime: DelayTime = 3) {
 		alertify.set("notifier", "position", position)
-		alertify.set("notifier", "delay", 3)
+		alertify.set("notifier", "delay", delayTime)
 		alertify[messageType](message)
 	}
 
@@ -36,4 +36,9 @@ export enum Position {
 	BottomRight = "bottom-right",
 	TopLeft = "top-left",
 	TopRight = "top-right"
+}
+
+export enum DelayTime{
+	LongDelay = 5,
+	ShortDelay = 3
 }
