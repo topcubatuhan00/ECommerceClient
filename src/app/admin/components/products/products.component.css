@@ -4,4 +4,8 @@
     margin: 10px;
     border: 1px solid #555;
     background: #eee;
+    height: 90%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,6 +8,7 @@ import { Create_Product } from '../../../../contracts/create_product';
 import { BaseComponent } from '../../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertifyService, DelayTime, MessageType, Position } from '../../../../services/admin/alertify.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'app-create',
@@ -20,7 +21,9 @@ export class CreateComponent extends BaseComponent {
 
 	constructor(private _service: ProductService, _spinner: NgxSpinnerService, private _alertify: AlertifyService) {
 		super(_spinner);
-	}	
+	}
+
+	@Output() createdProduct : EventEmitter<Create_Product> = new EventEmitter();
 
 	create(txtName: HTMLInputElement, txtPrice: HTMLInputElement, txtStock: HTMLInputElement){
 		this.showScanner();
@@ -32,6 +35,7 @@ export class CreateComponent extends BaseComponent {
 		this._service.createProduct(create_product, () => {
 			this.hideScanner();
 			this._alertify.message("Product created successfully!", MessageType.Success);
+			this.createdProduct.emit(create_product);
 		}, errorMessage => {this.hideScanner(); this._alertify.message(errorMessage, MessageType.Error, Position.BottomLeft, DelayTime.LongDelay)});
 	}
 

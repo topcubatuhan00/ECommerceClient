@@ -1,7 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 declare var $: any;
 
@@ -15,10 +14,8 @@ declare var $: any;
 export class AppComponent {
 	title = 'ECommerceClient';
 
-	ngOnInit(){
-		// $.get("https://localhost:7198/api/Product", (data: any) => {
-		// 	console.log(data);
-		// })
+	ngOnInit() {
+
 	}
 
 }

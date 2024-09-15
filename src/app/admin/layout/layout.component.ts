@@ -4,9 +4,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { AlertifyService, MessageType, Position } from '../../services/admin/alertify.service';
-
-
 
 @Component({
 	selector: 'app-layout',
@@ -17,9 +14,9 @@ import { AlertifyService, MessageType, Position } from '../../services/admin/ale
 })
 export class LayoutComponent {
 
-	constructor(private _alertify: AlertifyService) { }
+	constructor() { }
 	ngOnInit() {
-		// this._alertify.message('Hello World', MessageType.Error);
+		
 	}
 
 }

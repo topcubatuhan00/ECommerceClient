@@ -44,7 +44,6 @@ export class ListComponent extends BaseComponent {
 				this.paginator.length = allProducts.totalCount;
 			}
 		} else {
-			// Eğer undefined dönerse, hata veya boş veri işlemleri yapılabilir
 			this._alertify.message('Ürünler alınamadı.', MessageType.Error);
 			this.dataSource.data = []; // Veri olmadığında tabloyu temizle
 			if (this.paginator) {
@@ -52,35 +51,6 @@ export class ListComponent extends BaseComponent {
 			}
 		}
 	}
-
-	// async getProducts() {
-	// 	this.showScanner();
-	// 	const pageIndex = this.paginator ? this.paginator.pageIndex : 0;
-	// 	const pageSize = this.paginator ? this.paginator.pageSize : 5;
-
-	// 	try {
-	// 		const allProducts = await this._service.readProduct(pageIndex, pageSize);
-
-	// 		this._alertify.message("Ürünler başarıyla yüklendi.", MessageType.Success);
-	// 		if (allProducts) {
-	// 			this.dataSource = new MatTableDataSource<List_Product>(allProducts.data);
-	// 			if (this.paginator) {
-	// 				this.paginator.length = allProducts.totalCount; // toplam veri sayısını ayarla
-	// 				this.paginator.pageSize = pageSize; // sayfa boyutunu ayarla
-	// 				this.dataSource.paginator = this.paginator; // tabloya paginator'ı bağla
-	// 			}
-	// 		} else {
-	// 			this.dataSource.data = [];
-	// 			if (this.paginator) {
-	// 				this.paginator.length = 0;
-	// 			}
-	// 		}
-	// 	} catch (error) {
-	// 		this._alertify.message("Ürünler yüklenirken hata oluştu.", MessageType.Error);
-	// 	} finally {
-	// 		this.hideScanner();
-	// 	}
-	// }
 
 	async pageChanged() {
 		await this.getProducts();
