@@ -18,7 +18,7 @@ export class HttpClientService {
 
 	get<T>(requestParams: Partial<RequestParams>, id?: string): Observable<T> {
 		let url: string = "";
-		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}${id ? `/${id}` : ''}`;
+		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}${id ? `/${id}` : ''}${requestParams.queryString ? `?${requestParams.queryString}` : ""}`;
 
 		return this._http.get<T>(url, { headers: requestParams.headers });
 
@@ -26,21 +26,21 @@ export class HttpClientService {
 
 	post<T>(requestParams: Partial<RequestParams>, body: Partial<T>): Observable<T> {
 		let url: string = "";
-		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}`;
+		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}${requestParams.queryString ? `?${requestParams.queryString}` : ""}`;
 
 		return this._http.post<T>(url, body, { headers: requestParams.headers });
 	}
 
 	put<T>(requestParams: Partial<RequestParams>, body: Partial<T>): Observable<T> {
 		let url: string = "";
-		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}`;
+		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}${requestParams.queryString ? `?${requestParams.queryString}` : ""}`;
 
 		return this._http.put<T>(url, body, { headers: requestParams.headers });
 	}
 
 	delete<T>(requestParams: Partial<RequestParams>, id: string): Observable<T> {
 		let url: string = "";
-		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}/${id}`;
+		url = requestParams.fullEndPoint ? requestParams.fullEndPoint : `${this.generateUrl(requestParams)}/${id}${requestParams.queryString ? `?${requestParams.queryString}` : ""}`;
 	
 		return this._http.delete<T>(url, { headers: requestParams.headers });
 	}
@@ -53,4 +53,5 @@ export class RequestParams {
 	headers?: HttpHeaders
 	difficultBaseUrl?: string
 	fullEndPoint?: string
+	queryString?: string
 }
